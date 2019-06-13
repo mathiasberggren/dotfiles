@@ -81,9 +81,9 @@ noremap <silent> <expr> <C-_> (synIDattr(synID(line("."), col("."), 0), "name") 
 "Comment/Uncomment for C/C++, java+script files
 autocmd BufReadPost *.{c,cc,cpp,h,java,js} let b:commentCommand='I//'
 autocmd BufReadPost *.{c,cc,cpp,h,java,js} let b:unCommentCommand='^xx'
-"Comment/Uncomment for bash files
-autocmd BufReadPost *rc let b:commentCommand='I"'
-autocmd BufReadPost *rc let b:unCommentCommand='^x'
+"Comment/Uncomment for bash and script files
+autocmd BufReadPost {*rc,*.bash*} let b:commentCommand='I"'
+autocmd BufReadPost {*rc,*.bash*} let b:unCommentCommand='^x'
 "Comment/Uncomment for python, ruby, perl files
 autocmd BufReadPost *.{py,rb,pl} let b:commentCommand='I#'
 autocmd BufReadPost *.{py,rb,pl} let b:unCommentCommand='^x'
