@@ -40,6 +40,9 @@ command W w !sudo tee % > /dev/null
 " Highlight search results
 set hlsearch
 
+"Ctrl + Enter creates newline at cursor position
+nnoremap <silent> <c-cr> i<cr><Esc>
+
 " Turn of highlighted search results by pressing esc key
 nnoremap <silent> <Space> :noh<cr>
 
