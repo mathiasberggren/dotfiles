@@ -23,10 +23,16 @@ set splitright
 " Ignore case when searching
 set ignorecase
 " Move between :split windows with Ctrl + hjkl 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+
+" Move around split windows with Ctrl + HJKL
+nnoremap <C-S-h> <C-W>H
+nnoremap <C-S-j> <C-W>J
+nnoremap <C-S-k> <C-W>K
+nnoremap <C-S-l> <C-W>L  
 
 " Ignore case when searching
 set ignorecase
@@ -40,11 +46,11 @@ command W w !sudo tee % > /dev/null
 " Highlight search results
 set hlsearch
 
-"Ctrl + Enter creates newline at cursor position
-nnoremap <silent> <c-cr> i<cr><Esc>
+" Enter creates newline at cursor position and jumps back to prev position
+nnoremap <silent> <CR> i<CR><Esc>k$
 
-" Turn of highlighted search results by pressing esc key
-nnoremap <silent> <Space> :noh<cr>
+" Turn of highlighted search results by pressing space key
+nnoremap <silent> <Space> :noh<CR>
 
 " Visual mode pressing # searches for the current selection
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
@@ -82,11 +88,11 @@ noremap <silent> <expr> <C-_> (synIDattr(synID(line("."), col("."), 0), "name") 
 \ ':<S-Left>exe "<S-Right>normal! ".b:commentCommand<CR>'
 
 "Comment/Uncomment for C/C++, java+script files
-autocmd BufReadPost *.{c,cc,cpp,h,java,js} let b:commentCommand='I//'
-autocmd BufReadPost *.{c,cc,cpp,h,java,js} let b:unCommentCommand='^xx'
+autocmd BufReadPost *.{c,cc,cpp,h,java,js} let b:commentCommand='I// '
+autocmd BufReadPost *.{c,cc,cpp,h,java,js} let b:unCommentCommand='^xxx'
 "Comment/Uncomment for bash and script files
-autocmd BufReadPost {*rc,*.bash*} let b:commentCommand='I"'
-autocmd BufReadPost {*rc,*.bash*} let b:unCommentCommand='^x'
+autocmd BufReadPost {*rc,*.bash*} let b:commentCommand='I" '
+autocmd BufReadPost {*rc,*.bash*} let b:unCommentCommand='^xx'
 "Comment/Uncomment for python, ruby, perl files
-autocmd BufReadPost *.{py,rb,pl} let b:commentCommand='I#'
-autocmd BufReadPost *.{py,rb,pl} let b:unCommentCommand='^x'
+autocmd BufReadPost *.{py,rb,pl} let b:commentCommand='I# '
+autocmd BufReadPost *.{py,rb,pl} let b:unCommentCommand='^xx'
