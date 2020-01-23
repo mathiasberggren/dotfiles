@@ -19,9 +19,8 @@ set number
 set showcmd
 
 " Get same clipboard as system default = Enable copy between different VIM sessions
-" set clipboard=unnamedplus
-vmap <leader>y :w! /tmp/vitmp<CR>                                                                   
-nmap <leader>p :r! cat /tmp/vitmp<CR>
+" Installed vim-gnome instead of rebinds
+set clipboard=unnamedplus
 
 " <leader>e reloads the buffer if changed
 map <leader>e :bufdo e!<CR>
