@@ -1,6 +1,9 @@
 " Enable bash aliases inside of vim  (:! alias)
 let $BASH_ENV="~/.bash_aliases"
 
+" Set leader key to ,
+let mapleader = ","
+
 syntax enable
 colorscheme ron
 " Change default paranteses matching for ron colorscheme so they're not invisible
@@ -12,8 +15,16 @@ autocmd BufNewFile,BufRead *.tpp set syntax=cpp
 " Add line numbers
 set number
 
+" Display current command
+set showcmd
+
 " Get same clipboard as system default = Enable copy between different VIM sessions
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
+vmap <leader>y :w! /tmp/vitmp<CR>                                                                   
+nmap <leader>p :r! cat /tmp/vitmp<CR>
+
+" <leader>e reloads the buffer if changed
+map <leader>e :bufdo e!<CR>
 
 " Tab = 4 spaces
 filetype plugin indent on
@@ -69,8 +80,8 @@ set hlsearch
 " Turn of highlighted search results by pressing space key
 nnoremap <silent> <Space> :noh<CR>
 
-" Visual mode pressing # searches for the current selection
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+" Visual mode pressing <leader>s searches for the current selection
+vnoremap <silent> <leader>s :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 function! CmdLine(str)
     call feedkeys(":" . a:str)
@@ -108,7 +119,7 @@ noremap <silent> <expr> <C-_> (synIDattr(synID(line("."), col("."), 0), "name") 
 autocmd BufReadPost *.{c,cc,cpp,tpp,h,cu,java,js} let b:commentCommand='I// '
 autocmd BufReadPost *.{c,cc,cpp,tpp,h,cu,java,js} let b:unCommentCommand='^xxx'
 "Comment/Uncomment for bash and script files
-autocmd BufReadPost {*rc,*.bash*} let b:commentCommand='I# '
+autocmd BufReadPost {*rc,*.bash*} let b:commentCommand='I" '
 autocmd BufReadPost {*rc,*.bash*} let b:unCommentCommand='^xx'
 "Comment/Uncomment for python, ruby, perl files
 autocmd BufReadPost *.{py,rb,pl} let b:commentCommand='I# '
