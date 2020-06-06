@@ -1,15 +1,15 @@
 #! /bin/bash
-current_dir=$(pwd)"/"
 
-bash_alias=$current_dir.bash_aliases.sh
-bash_alias=$current_dir.
-bash_alias=$current_dir.bash_aliases.sh
+this_dir=$(pwd)"/"
+home_dir=/$(echo $this_dir | cut -d '/' -f 2,3)
 
-echo $bash_alias
+bash_alias_this_dir=$this_dir.bash_aliases
+vimrc_this_dir=$this_dir.vimrc
+bashrc_this_dir=$this_dir.bashrc
 
-#mv $(bash_alias) $(current_dir)".vimrc" $(current_dir)".bashrc"
-#ln "~/.vimrc.sh" "./"
-#ln "~/.bashrc.sh" "./"
-#ln "~/.bash_aliases.sh" "./"
+mv $bash_alias_this_dir $vimrc_this_dir $bashrc_this_dir $home_dir
+ln ${home_dir}/.vimrc $this_dir
+ln ${home_dir}/.bash_aliases $this_dir
+ln ${home_dir}/.bashrc $this_dir
 
-#sudo apt-get install ./install_script.sh
+sudo bash ./install_script.sh
