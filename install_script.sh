@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #List of programs to install
-list="code vim git tldr python3-dev spotify-client nodejs npm"
+list="code vim git tldr python3-dev spotify-client nodejs npm python-pip python3-venv postgresql-client-common libpq-dev postgresql-client postgresql"
 
 # Add repositories not present by standard
 
@@ -28,3 +28,4 @@ apt-get install -y ${list}
 # install tldr from npm
 npm install -g tldr
 apt-get update
+apt-get upgrade
