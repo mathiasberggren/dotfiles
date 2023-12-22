@@ -1,31 +1,17 @@
-#! /bin/sh
+#!/bin/bash
 
-#List of programs to install
-list="code vim git tldr python3-dev spotify-client nodejs npm python-pip python3-venv postgresql-client-common libpq-dev postgresql-client postgresql"
+# Check if Homebrew is installed
+if ! command -v brew &> /dev/null; then
+    # Install Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-# Add repositories not present by standard
+# Read the list of formulae from a file
+while read formula; do
+   brew install "$formula"
+done < formulae.txt
 
-    # Get newest git repo to get Restore and Switch
-    add-apt-repository ppa:git-core/ppa
-
-    ## vscode 
-    if ! hash code 2>/dev/null; then
-        curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-        install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-        sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-        apt-get install apt-transport-https
-    fi
-
-    ## spotify
-    if ! hash spotify 2>/dev/null; then
-        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 4773BD5E130D1D45
-        add-apt-repository "deb http://repository.spotify.com stable non-free"
-    fi
-
-
-apt-get update
-apt-get install -y ${list}
-# install tldr from npm
-npm install -g tldr
-apt-get update
-apt-get upgrade
+# Read the list of casks from a file
+while read cask; do
+   brew install --cask "$cask"
+done < casks.txt
