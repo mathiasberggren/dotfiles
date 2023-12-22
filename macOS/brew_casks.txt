@@ -1,0 +1,13 @@
+anki
+adobe-acrobat-reader
+discord
+flipper
+google-chrome
+iterm2
+insomnia
+ngrok
+rectangle
+spotify
+tableplus
+visual-studio-code
+zoom
