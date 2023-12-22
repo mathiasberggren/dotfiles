@@ -11,11 +11,11 @@ if ! command -v brew &> /dev/null; then
 fi
 
 # Read the list of formulae from a file
-while read formula; do
-   brew install "$formula"
-done < formulae.txt
+while read packages; do
+   brew install "$packages"
+done < brew_packages.txt
 
 # Read the list of casks from a file
 while read cask; do
    brew install --cask "$cask"
-done < casks.txt
+done < brew_casks.txt
