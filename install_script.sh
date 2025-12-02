@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #List of programs to install
-list="code vim git tldr python3-dev spotify-client nodejs npm python-pip python3-venv postgresql-client-common libpq-dev postgresql-client postgresql"
+list="code vim git tldr python3-dev spotify-client nodejs npm python3-pip python3-venv postgresql-client-common libpq-dev postgresql-client postgresql"
 
 # Add repositories not present by standard
 
